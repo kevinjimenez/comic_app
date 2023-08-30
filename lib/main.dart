@@ -2,7 +2,10 @@ import 'package:comic/config/config.dart';
 import 'package:comic/presentations/screens/screens.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  await Environment.initEnvironment();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -10,10 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme().getTheme(),
-      title: 'Material App',
-      home: const HomeScreen()
-    );
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme().getTheme(),
+        title: 'Material App',
+        home: const HomeScreen());
   }
 }
