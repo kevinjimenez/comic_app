@@ -8,7 +8,6 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final charactersState = ref.watch(charactersProvider);
-    print(charactersState.characters);
     return Scaffold(
       appBar: AppBar(
         title: const Text('data'),
@@ -17,7 +16,12 @@ class HomeScreen extends ConsumerWidget {
         itemCount: charactersState.characters.length,
         itemBuilder: (context, index) {
           final character = charactersState.characters[index];
-          return Text(character.name);
+          return Column(children: [
+            Text(character.name),
+            Text('${character.gender}'),
+            Text(character.origin.name),
+            Text(character.publisher.name)
+          ],);
         },
       ),
     );
